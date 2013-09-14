@@ -1,0 +1,22 @@
+%section#main_content
+  - if user_signed_in?
+    %article#welcome
+      %p
+        You are in the app :)
+      %p
+        = link_to "Edit Profile", edit_user_registration_path(current_user)
+      %p
+        = link_to "Sign out", destroy_user_session_path, method: :delete
+    %article#social-section
+      = render partial: "social_block"
+  - else
+    %article#sign_up
+      %h1
+        Social Aggregator
+      %h1
+        Sign Up for Free
+      %p
+        = link_to "Register", new_user_registration_path, class: "btn btn-primary"
+      %p.sign_in
+        %span
+          = link_to "Sign In", new_user_session_path, class: "sign_in btn btn-primary"
