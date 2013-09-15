@@ -20,4 +20,20 @@ class SocialInboxFeed < ActiveRecord::Base
     self["inbox_type"] == INBOXTYPE::FACEBOOK
   end
 
+  def twitter?
+    self["inbox_type"] == INBOXTYPE::USERTIMELINE
+  end
+  
+  def self.parse_tweet(tweet, inbox_type)
+    social_inbox_feed =  SocialInboxFeed.find_or_create_by({tweet_id: tweet.id})
+
+    social_inbox_feed.update_attributes({message: tweet.text, created_time: tweet.created_at,
+     updated_time: tweet.created_at, user_id: tweet.user.id, user_name: tweet.user.name,
+     user_picture: tweet.user.profile_image_url_https, inbox_type: inbox_type, screen_name: tweet.user.screen_name,
+     media: tweet.user.status.media.try(:first).try(:media_url_https),
+     mentions: tweet.user_mentions.collect{|x| x[:screen_name]}, reply_to_status_id: tweet.in_reply_to_status_id})
+    social_inbox_feed
+  end
+  
+
 end

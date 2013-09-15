@@ -1,0 +1,8 @@
+development:
+  resque: redis://localhost:6379
+
+test:
+  resque: redis://localhost:6379
+
+production:
+  resque: redis://localhost:6379

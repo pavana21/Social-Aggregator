@@ -1,0 +1,16 @@
+- if current_user.social.social_inbox_feeds.present?
+  %ul.span10
+    = current_user.social.social_inbox_feeds.each do |feed|
+      %li
+        - if feed.facebook?
+          %span.span2
+            = image_tag(asset_path("facebook-icon.png"))
+          %span.span6
+            %p
+              = feed.message
+        - if feed.twitter?
+          %span.span2
+            = image_tag(asset_path("twitter-icon.png"))
+          %span.span6
+            %p
+              = feed.message

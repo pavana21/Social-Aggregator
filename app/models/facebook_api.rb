@@ -5,8 +5,9 @@ class FacebookProfile < ActiveRecord::Base
     end
 
     def home_feeds(start_time, access_token)
-      graph(access_token).
-        get_connections("me", "home", {:since => start_time + 1, :until => Time.now.to_i})
+      puts "Access Token : #{access_token}"
+      puts "Object: #{graph(access_token).get_object('me')}"
+      graph(access_token).get_connections("me", "home", {:since => start_time + 1, :until => Time.now.to_i})
     end
 
     def feed(access_token, feed_id)
