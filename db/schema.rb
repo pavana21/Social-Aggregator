@@ -11,7 +11,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130914041145) do
+ActiveRecord::Schema.define(version: 20130914093439) do
+
+  create_table "facebook_profiles", force: true do |t|
+    t.integer  "social_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "description"
+    t.string   "about"
+    t.string   "location"
+    t.string   "url"
+    t.string   "facebook_oauth_token"
+    t.string   "facebook_uid"
+    t.string   "access_token"
+  end
+
+  create_table "linkedin_profiles", force: true do |t|
+    t.integer  "social_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "social_inbox_feeds", force: true do |t|
+    t.string   "feed_id"
+    t.string   "tweet_id"
+    t.text     "message"
+    t.string   "story"
+    t.string   "photo"
+    t.string   "link"
+    t.datetime "created_time"
+    t.string   "user_id"
+    t.string   "inbox_type"
+    t.string   "user_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "social_id"
+    t.datetime "updated_time"
+  end
+
+  create_table "socials", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "twitter_profiles", force: true do |t|
+    t.integer  "social_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email"

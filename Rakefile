@@ -3,4 +3,14 @@
 
 require File.expand_path('../config/application', __FILE__)
 
+require 'rake'
+require 'resque/tasks'
+require 'resque_scheduler'
+require 'resque_scheduler/tasks'
+require 'resque_scheduler/server'
+
+task "resque:setup" => :environment do
+  ENV['QUEUE'] = '*'
+end
+
 SocialAggregator::Application.load_tasks

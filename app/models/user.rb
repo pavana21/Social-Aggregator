@@ -4,7 +4,5 @@ class User < ActiveRecord::Base
   devise    :database_authenticatable, :registerable,
             :recoverable, :rememberable, :trackable, :validatable
          
-  has_one   :facebook_profile
-  has_one   :twitter_profile
-  has_one   :linkedin_profile
+  has_one   :social, autosave: true
 end
