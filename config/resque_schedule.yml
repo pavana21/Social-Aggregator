@@ -1,0 +1,6 @@
+facebook_page_feeds:
+  every: "5m"
+  class: FacebookAllAccountsFetchJob
+  queue: page_feeds
+  args:
+  description: Generating feeds on page.
