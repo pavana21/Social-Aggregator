@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  feed_id: MyString
+  tweet_id: MyString
+  message: MyText
+  story: MyString
+  photo: MyString
+  link: MyString
+  created_time: 2013-09-14 14:10:24
+  user_id: MyString
+  inbox_type: MyString
+  user_name: MyString
+
+two:
+  feed_id: MyString
+  tweet_id: MyString
+  message: MyText
+  story: MyString
+  photo: MyString
+  link: MyString
+  created_time: 2013-09-14 14:10:24
+  user_id: MyString
+  inbox_type: MyString
+  user_name: MyString
