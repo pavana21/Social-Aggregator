@@ -1,0 +1,6 @@
+if(<%=@feeds.present? %>){
+  $("article#social-feeds-inbox").append("<%= escape_javascript(render('social_inbox_feeds')) %>")
+}
+else {
+  $(".show-more").hide();
+}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130915132134) do
+ActiveRecord::Schema.define(version: 20130916094339) do
 
   create_table "facebook_profiles", force: true do |t|
     t.integer  "social_id"
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 20130915132134) do
     t.integer  "social_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "description"
+    t.string   "about"
+    t.string   "location"
+    t.string   "url"
+    t.string   "linkedin_oauth_token"
+    t.string   "linkedin_oauth_secret_token"
+    t.string   "linkedin_uid"
+    t.string   "access_token"
   end
 
   create_table "social_inbox_feeds", force: true do |t|

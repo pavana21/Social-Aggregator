@@ -15,9 +15,9 @@
         %span.span1
           Filter By: 
         %span
-          = link_to image_tag(asset_path("facebook-icon.png")), social_inbox_feed_filter_feeds_path, class: "filter-part span1", "data-inboxtype" => SocialInboxFeed::INBOXTYPE::FACEBOOK
-          = link_to image_tag(asset_path("twitter-icon.png")), social_inbox_feed_filter_feeds_path, class: "filter-part span1", "data-inboxtype" => SocialInboxFeed::INBOXTYPE::USERTIMELINE
-          = link_to image_tag(asset_path("linkedin-icon.png")), social_inbox_feed_filter_feeds_path, class: "filter-part span1", "data-inboxtype" => SocialInboxFeed::INBOXTYPE::LINKEDIN
+          = link_to image_tag(asset_path("facebook-icon.png")), filter_feeds_social_inbox_feeds_path, class: "filter-part span1", "data-inboxtype" => SocialInboxFeed::INBOXTYPE::FACEBOOK
+          = link_to image_tag(asset_path("twitter-icon.png")), filter_feeds_social_inbox_feeds_path, class: "filter-part span1", "data-inboxtype" => SocialInboxFeed::INBOXTYPE::USERTIMELINE
+          = link_to image_tag(asset_path("linkedin-icon.png")), filter_feeds_social_inbox_feeds_path, class: "filter-part span1", "data-inboxtype" => SocialInboxFeed::INBOXTYPE::LINKEDIN
       .clear  
       %div.search-part
         = form_tag social_inbox_feeds_path, :method => 'get' do

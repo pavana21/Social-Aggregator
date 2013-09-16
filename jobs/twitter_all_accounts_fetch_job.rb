@@ -4,7 +4,6 @@ class TwitterAllAccountsFetchJob
   class << self
     def perform
       Social.all.each do |social|
-        Resque.enqueue(TwitterDetailsJob, social.twitter_profile.id)
         Resque.enqueue(TwitterUserTimelineJob, social.id)
       end
     end

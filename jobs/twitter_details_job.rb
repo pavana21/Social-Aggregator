@@ -11,10 +11,7 @@ class TwitterDetailsJob
     attributes = {name: user.name,
                   description: user.description,
                   location: user.location,
-                  url: user.url,
-                  profile_image: user.profile_image_url_https,
-                  profile_background: user.profile_background_image_url_https,
-                  user_id: user.id}
+                  url: user.url}
 
     twitter_profile.update_attributes(attributes)
   end

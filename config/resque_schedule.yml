@@ -1,6 +1,13 @@
 facebook_page_feeds:
-  every: "5m"
+  every: "15m"
   class: FacebookAllAccountsFetchJob
   queue: page_feeds
   args:
   description: Generating feeds on page.
+  
+twitter_page_feeds:
+  every: "15m"
+  class: TwitterAllAccountsFetchJob
+  queue: tweet_messages
+  args:
+  description: Generating tweets on page.

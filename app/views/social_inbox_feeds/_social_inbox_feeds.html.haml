@@ -1,0 +1,20 @@
+- if @feeds.present?
+  %ul.span10.feeds_list
+    - @feeds.each do |feed|
+      %li
+        - if feed.facebook?
+          %span.span2
+            = image_tag(asset_path("facebook-icon.png"))
+          = render partial: "feed_block", locals: {feed: feed}
+        - if feed.twitter?
+          %span.span2
+            = image_tag(asset_path("twitter-icon.png"))
+          = render partial: "feed_block", locals: {feed: feed}
+        - if feed.linkedin?
+          %span.span2
+            = image_tag(asset_path("twitter-icon.png"))
+          = render partial: "feed_block", locals: {feed: feed}
+      .clear
+- else
+  %p
+    There are no more feeds

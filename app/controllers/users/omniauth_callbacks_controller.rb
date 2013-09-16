@@ -10,7 +10,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def twitter
     current_user.social.twitter_profile.find_for_oauth(request.env["omniauth.auth"])
     current_user.social.save
-    redirect_to social_login_details_accounts_path
+    redirect_to root_url
+  end
+
+  def linkedin
+    current_user.social.linkedin_profile.find_for_oauth(request.env["omniauth.auth"])
+    current_user.social.save
+    redirect_to root_url
   end
   
   private
@@ -18,8 +24,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     unless current_user.social.present?
       @social = current_user.build_social
       @social.save
-      FacebookProfile.create(social_id: @social.id)
-      TwitterProfile.create(social_id: @social.id)
+      @fp = @social.build_facebook_profile
+      @fp.save
+      @tp = @social.build_twitter_profile
+      @tp.save
     end
   end
 end

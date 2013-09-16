@@ -20,18 +20,18 @@ gem 'omniauth'
 gem "bootstrap-sass-rails", "~> 2.2.1.2"
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'omniauth-linkedin'
+gem 'oauth'
 gem 'koala', '~> 1.6.0'
-gem 'twitter', '~> 4.5.0'
+gem 'twitter'
+gem 'linkedin'
 gem 'pry'
 gem 'heroku'
 gem 'resque'
 gem 'redis'
 gem 'resque-scheduler'
+gem 'will_paginate'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
 gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -44,15 +44,3 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]

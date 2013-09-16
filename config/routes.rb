@@ -8,9 +8,14 @@ SocialAggregator::Application.routes.draw do
   end
   
   authenticate :user do
-    root :to => 'home#index'
+    root :to => 'social_inbox_feeds#index'
   end
-
+  resources :social_inbox_feeds do
+    collection do
+      get :filter_feeds
+    end
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

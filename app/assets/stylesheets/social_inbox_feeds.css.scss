@@ -1,3 +1,30 @@
 // Place all the styles related to the social_inbox_feeds controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+header.social_buttons {
+  a.span3 {
+    margin-right: 30px;
+  }
+}
+article#social-search-part {
+  .filter-part-block {
+    a.filter-part {
+      img {
+        width: 60px;
+        height: 60px;
+        display: block;
+      }
+      
+    }
+  }
+}
+article#social-feeds-inbox {
+  ul {
+    list-style: none;
+    img {
+      width: 100px;
+      height: 100px;
+      display: block;
+    }
+  }
+}
