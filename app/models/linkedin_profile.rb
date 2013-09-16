@@ -1,5 +1,9 @@
 class LinkedinProfile < ActiveRecord::Base
   belongs_to :social
+
+  def authorized?
+    linkedin_oauth_token.present?
+  end
   
   def find_for_oauth(auth)
     if !((linkedin_oauth_token == auth.credentials["token"]) &&

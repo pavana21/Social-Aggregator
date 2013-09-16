@@ -11,6 +11,7 @@ class TwitterProfile < ActiveRecord::Base
       self.update_attributes(twitter_oauth_token: auth.credentials["token"],
       twitter_uid: auth.uid, twitter_oauth_secret_token: auth.credentials["secret"])
     end
+    create_twitter
   end
   
   def create_twitter

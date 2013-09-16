@@ -6,7 +6,7 @@ class FacebookProfileDetailsJob
     facebook_profile = social.facebook_profile
     facebook_oauth_token = facebook_profile.facebook_oauth_token
     if facebook_oauth_token.present? && facebook_profile.facebook_uid.present?
-      update_profile(access_token, facebook_profile)
+      update_profile(facebook_oauth_token, facebook_profile)
     end
   end
 

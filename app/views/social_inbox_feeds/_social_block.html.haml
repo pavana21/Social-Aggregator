@@ -1,5 +1,32 @@
 %section.social_block
   %header.social_buttons
-    = link_to(image_tag(asset_path("facebook.png")), omniauth_authorize_path(current_user, :facebook), class: "span3 no-margin-left")
-    = link_to(image_tag(asset_path("twitter.png")), omniauth_authorize_path(current_user, :twitter), class: "span3 no-margin-left")
-    = link_to(image_tag(asset_path("linkedin.png")), omniauth_authorize_path(current_user, :linkedin), class: "span3 no-margin-left")
+    - if current_user.social.facebook_profile.authorized?
+      .connected-block
+        %span.span1
+          = image_tag(asset_path("facebook-icon.png"))
+        %span.span2
+          = current_user.social.facebook_profile.name
+          %br
+          Authenticated
+    - else
+      = link_to(image_tag(asset_path("facebook.png")), omniauth_authorize_path(current_user, :facebook), class: "span3 no-margin-left")
+    - if current_user.social.facebook_profile.authorized?
+      .connected-block
+        %span.span1
+          = image_tag(asset_path("twitter-icon.png"))
+        %span.span2
+          = current_user.social.twitter_profile.name
+          %br
+          Authenticated
+    - else
+      = link_to(image_tag(asset_path("twitter.png")), omniauth_authorize_path(current_user, :twitter), class: "span3 no-margin-left")
+    - if current_user.social.linkedin_profile.authorized?
+      .connected-block
+        %span.span1
+          = image_tag(asset_path("linkedin-icon.png"))
+        %span.span2
+          = current_user.social.linkedin_profile.name
+          %br
+          Authenticated
+    - else
+      = link_to(image_tag(asset_path("linkedin.png")), omniauth_authorize_path(current_user, :linkedin), class: "span3 no-margin-left")
