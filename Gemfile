@@ -34,6 +34,7 @@ gem 'resque'
 gem 'redis'
 gem 'resque-scheduler'
 gem 'will_paginate'
+gem "god"
 
 gem 'jquery-rails'
 

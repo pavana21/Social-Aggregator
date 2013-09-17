@@ -16,19 +16,68 @@ default_run_options[:pty] = true
 set :use_sudo, false
 set :rvm_type, :system
 set :sudo_prompt, ""
+load 'deploy/assets'
 
 set :deploy_via, :remote_cache
 set :repository_cache, "cached_copy"
 
 after "deploy", "deploy:cleanup"
 
-namespace :deploy do
-  %w[start stop restart].each do |command|
-    desc "#{command} unicorn server"
-    task command, roles: :app, except: {no_release: true} do
-      run "/etc/init.d/unicorn_#{application} #{command}"
-    end
+def god_run(command)
+  run "cd #{current_path} && #{sudo} bundle exec god #{command}"
+end
+
+namespace :god do
+  task :start do
+    god_run "-c config/god/resque.god --log log/resque.log"
   end
+
+  task :reload do
+    god_run "load config/god/resque.god --log log/resque.log"
+  end
+
+  task :stop do
+    god_run "quit"
+  end
+
+  task :status do
+    god_run "status"
+  end
+
+  task :restart do
+    god.stop
+    god.start
+  end
+end
+
+namespace :resque do
+  task :restart do
+    god_run "restart resque"
+  end
+
+  task :stop do
+    god_run "stop resque"
+  end
+
+  task :start do
+    god_run "start resque"
+  end
+end
+
+
+namespace :deploy do
+    task :start do
+      god.start
+    end
+
+    task :restart, :roles => :app, :except => { :no_release => true } do
+      god.restart
+      resque.restart
+    end
+
+    task :stop do
+      resque.stop
+    end
 
   task :setup_config, roles: :app do
     sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"

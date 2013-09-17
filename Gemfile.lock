@@ -58,6 +58,7 @@ GEM
     execjs (2.0.1)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    god (0.13.2)
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -245,6 +246,7 @@ DEPENDENCIES
   capistrano
   coffee-rails (~> 4.0.0)
   devise
+  god
   haml-rails
   heroku
   jbuilder (~> 1.2)

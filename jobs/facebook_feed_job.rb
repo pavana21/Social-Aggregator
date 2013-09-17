@@ -6,7 +6,7 @@ class FacebookFeedJob
     social = Social.find(social_profile_id)
     facebook_profile = social.facebook_profile
     
-    if social.social_inbox_feeds.present? && social.social_inbox_feeds.inbox_type(SocialInboxFeed::INBOXTYPE::FACEBOOK).count > 0
+    if social.social_inbox_feeds.present? && social.social_inbox_feeds.where(inbox_type: SocialInboxFeed::INBOXTYPE::FACEBOOK).count > 0
       start_time = social.social_inbox_feeds.inbox_type(SocialInboxFeed::INBOXTYPE::FACEBOOK).last.updated_time.to_i
       persist_feeds(start_time, facebook_profile.facebook_oauth_token)
     else
