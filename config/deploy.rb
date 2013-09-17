@@ -38,6 +38,7 @@ namespace :deploy do
     desc "#{command} unicorn server"
     task command, roles: :app, except: {no_release: true} do
       run "/etc/init.d/unicorn_#{application} #{command}"
+      run "/etc/init.d/redis #{command}"
     end
   end
 
