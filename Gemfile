@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'mysql2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -27,6 +27,8 @@ gem 'twitter'
 gem 'linkedin'
 gem 'pry'
 gem 'heroku'
+gem 'capistrano'
+gem 'unicorn'
 gem 'resque'
 gem 'redis'
 gem 'resque-scheduler'

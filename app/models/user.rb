@@ -7,6 +7,6 @@ class User < ActiveRecord::Base
   has_one   :social
   
   def check_social_profile?(profile)
-    social.present? && profile.present? && profile.authorized?
+    profile.present? && profile.authorized?
   end
 end
