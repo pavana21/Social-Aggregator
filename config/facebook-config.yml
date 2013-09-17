@@ -1,3 +1,8 @@
 development:
   app_id: 212121245621554
   app_secret:	96acf8c2a4fee33457e5008c63f9f298
+  crt_path: /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+production:
+  app_id: 1403527159875374
+  app_secret:	647ff83e6321aae0c000b5222628c22d
+  crt_path: /etc/pki/tls/certs/ca-bundle.crt

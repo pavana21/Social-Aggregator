@@ -1,3 +1,6 @@
 development:
   app_id: 41gM1WZGUUWQ0fkFTqaw
   app_secret:	Vknc0AqWFUQtjyMq7N3zqCZjlU250pVdlTFLaTCyw
+production:
+  app_id: nufHjk1zKsz1QizhhMSJBw
+  app_secret:	QwOTIIgPu0uylX9ADK7wcfdi5p2jkXwiVnq0iUPiM

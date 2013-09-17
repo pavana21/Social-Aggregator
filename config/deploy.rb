@@ -15,6 +15,7 @@ set :scm, :git
 default_run_options[:pty] = true
 set :use_sudo, false
 set :rvm_type, :system
+set :sudo_prompt, ""
 
 set :deploy_via, :remote_cache
 set :repository_cache, "cached_copy"
