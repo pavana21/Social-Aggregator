@@ -3,13 +3,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
     current_user.social.facebook_profile.find_for_oauth(request.env["omniauth.auth"])
-    current_user.social.save
     redirect_to :back
   end
 
   def twitter
     current_user.social.twitter_profile.find_for_oauth(request.env["omniauth.auth"])
-    current_user.social.save
     redirect_to root_url
   end
 

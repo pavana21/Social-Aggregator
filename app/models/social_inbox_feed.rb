@@ -37,12 +37,12 @@ class SocialInboxFeed < ActiveRecord::Base
     self["inbox_type"] == INBOXTYPE::LINKEDIN
   end
   
-  def self.parse_tweet(tweet, inbox_type)
+  def self.parse_tweet(tweet, inbox_type, social)
     social_inbox_feed =  SocialInboxFeed.find_or_create_by({tweet_id: tweet.id})
 
     social_inbox_feed.update_attributes({message: tweet.text, created_time: tweet.created_at,
      updated_time: tweet.created_at, user_id: tweet.user.id, user_name: tweet.user.name,
-     user_picture: tweet.user.profile_image_url_https, inbox_type: inbox_type, screen_name: tweet.user.screen_name, social_id: social.id})
+     inbox_type: inbox_type, social_id: social.id})
     social_inbox_feed
   end
 end
