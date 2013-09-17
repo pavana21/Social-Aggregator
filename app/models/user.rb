@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
             :recoverable, :rememberable, :trackable, :validatable, :omniauthable
          
   has_one   :social
+  
+  def check_social_profile?(profile)
+    social.present? && profile.present? && profile.authorized?
+  end
 end

@@ -19,9 +19,6 @@ class TwitterProfile < ActiveRecord::Base
   end
   
   def client
-    Twitter::Client.new(
-      :oauth_token => TwitterProfile.last.twitter_oauth_token,
-      :oauth_token_secret => TwitterProfile.last.twitter_oauth_secret_token
-    )
+    Twitter::Client.new(:oauth_token => twitter_oauth_token, :oauth_token_secret => twitter_oauth_secret_token)
   end
 end

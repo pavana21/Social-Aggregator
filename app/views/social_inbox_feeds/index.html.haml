@@ -10,26 +10,27 @@
     %article#social-section
       = render partial: "social_block"
     .clear
-    %article#social-search-part
-      %div.filter-part-block
-        %span.span1
-          Filter By: 
-        %span
-          = link_to image_tag(asset_path("facebook-icon.png")), filter_feeds_social_inbox_feeds_path, class: "filter-part span1", "data-inboxtype" => SocialInboxFeed::INBOXTYPE::FACEBOOK
-          = link_to image_tag(asset_path("twitter-icon.png")), filter_feeds_social_inbox_feeds_path, class: "filter-part span1", "data-inboxtype" => SocialInboxFeed::INBOXTYPE::USERTIMELINE
-          = link_to image_tag(asset_path("linkedin-icon.png")), filter_feeds_social_inbox_feeds_path, class: "filter-part span1", "data-inboxtype" => SocialInboxFeed::INBOXTYPE::LINKEDIN
-      .clear  
-      %div.search-part
-        = form_tag social_inbox_feeds_path, :method => 'get' do
-          %p
-            = text_field_tag :search, params[:search]
-            = submit_tag "Search", :name => nil
-    .clear
-    %article#social-feeds-inbox
-      = will_paginate @feeds
-      = render partial: "social_inbox_feeds"
-    .clear
-    = link_to "Show More", "#", class: "btn btn-primary show-more"
+    - if current_user.social.present?
+      %article#social-search-part
+        %div.filter-part-block
+          %span.span1
+            Filter By: 
+          %span
+            = link_to image_tag(asset_path("facebook-icon.png")), filter_feeds_social_inbox_feeds_path, class: "filter-part span1", "data-inboxtype" => SocialInboxFeed::INBOXTYPE::FACEBOOK
+            = link_to image_tag(asset_path("twitter-icon.png")), filter_feeds_social_inbox_feeds_path, class: "filter-part span1", "data-inboxtype" => SocialInboxFeed::INBOXTYPE::USERTIMELINE
+            = link_to image_tag(asset_path("linkedin-icon.png")), filter_feeds_social_inbox_feeds_path, class: "filter-part span1", "data-inboxtype" => SocialInboxFeed::INBOXTYPE::LINKEDIN
+        .clear  
+        %div.search-part
+          = form_tag social_inbox_feeds_path, :method => 'get' do
+            %p
+              = text_field_tag :search, params[:search]
+              = submit_tag "Search", :name => nil
+      .clear
+      %article#social-feeds-inbox
+        = will_paginate @feeds
+        = render partial: "social_inbox_feeds"
+      .clear
+      = link_to "Show More", "#", class: "btn btn-primary show-more"
   - else
     %article#sign_up
       %h1

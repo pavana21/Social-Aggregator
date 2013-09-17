@@ -1,7 +1,7 @@
 require 'will_paginate/array'
 class SocialInboxFeedsController < ApplicationController  
   def index
-    @feeds = current_user.social.social_inbox_feeds.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+    @feeds = current_user.social.social_inbox_feeds.search(params[:search]).paginate(:page => params[:page], :per_page => 10) if current_user.social.present?
     respond_to :html, :js
   end
   
