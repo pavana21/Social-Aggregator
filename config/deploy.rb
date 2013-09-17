@@ -22,62 +22,24 @@ set :deploy_via, :remote_cache
 set :repository_cache, "cached_copy"
 
 after "deploy", "deploy:cleanup"
+after "deploy:symlink", "deploy:restart_workers"
+after "deploy:restart_workers", "deploy:restart_scheduler"
 
-def god_run(command)
-  run "cd #{current_path} && #{sudo} bundle exec god #{command}"
+def run_remote_rake(rake_cmd)
+  rake_args = ENV['RAKE_ARGS'].to_s.split(',')
+  cmd = "cd #{fetch(:latest_release)} && #{fetch(:rake, "rake")} RAILS_ENV=#{fetch(:rails_env, "production")} #{rake_cmd}"
+  cmd += "['#{rake_args.join("','")}']" unless rake_args.empty?
+  run cmd
+  set :rakefile, nil if exists?(:rakefile)
 end
-
-namespace :god do
-  task :start do
-    god_run "-c config/god/resque.god --log log/resque.log"
-  end
-
-  task :reload do
-    god_run "load config/god/resque.god --log log/resque.log"
-  end
-
-  task :stop do
-    god_run "quit"
-  end
-
-  task :status do
-    god_run "status"
-  end
-
-  task :restart do
-    god.stop
-    god.start
-  end
-end
-
-namespace :resque do
-  task :restart do
-    god_run "restart resque"
-  end
-
-  task :stop do
-    god_run "stop resque"
-  end
-
-  task :start do
-    god_run "start resque"
-  end
-end
-
-
+ 
 namespace :deploy do
-    task :start do
-      god.start
+  %w[start stop restart].each do |command|
+    desc "#{command} unicorn server"
+    task command, roles: :app, except: {no_release: true} do
+      run "/etc/init.d/unicorn_#{application} #{command}"
     end
-
-    task :restart, :roles => :app, :except => { :no_release => true } do
-      god.restart
-      resque.restart
-    end
-
-    task :stop do
-      resque.stop
-    end
+  end
 
   task :setup_config, roles: :app do
     sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
@@ -100,6 +62,16 @@ namespace :deploy do
       puts "Run `git push` to sync changes."
       exit
     end
+  end
+
+  desc "Restart Resque Workers"
+  task :restart_workers, :roles => :db do
+    run_remote_rake "resque:restart_workers"
+  end
+ 
+  desc "Restart Resque scheduler"
+  task :restart_scheduler, :roles => :db do
+    run_remote_rake "resque:restart_scheduler"
   end
   
   before "deploy", "deploy:check_revision"
