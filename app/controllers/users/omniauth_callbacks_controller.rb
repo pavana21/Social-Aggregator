@@ -3,7 +3,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
     current_user.social.facebook_profile.find_for_oauth(request.env["omniauth.auth"])
-    redirect_to :back
+    redirect_to root_url
   end
 
   def twitter
@@ -13,7 +13,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def linkedin
     current_user.social.linkedin_profile.find_for_oauth(request.env["omniauth.auth"])
-    current_user.social.save
     redirect_to root_url
   end
   
@@ -26,6 +25,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @fp.save
       @tp = @social.build_twitter_profile
       @tp.save
+      @linkedin = @social.build_linkedin_profile
+      @linkedin.save
     end
   end
 end
