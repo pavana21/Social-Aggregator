@@ -20,6 +20,8 @@ load 'deploy/assets'
 
 set :deploy_via, :remote_cache
 set :repository_cache, "cached_copy"
+set :queue_name, "*"
+set :num_of_queues, 3
 
 after "deploy", "deploy:cleanup"
 after "deploy:symlink", "deploy:restart_workers"
