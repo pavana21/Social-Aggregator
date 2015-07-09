@@ -28,13 +28,19 @@ gem 'linkedin'
 gem 'pry'
 gem 'heroku'
 gem 'capistrano'
-gem 'rvm-capistrano'
+# gem 'rvm-capistrano'
 gem 'unicorn'
 gem 'resque'
 gem 'redis'
 gem 'resque-scheduler'
 gem 'will_paginate'
 gem "god"
+gem "ci_reporter"
+gem "simplecov"
+gem "simplecov-rcov"
+gem 'rspec'                                   # Rspec for testing
+gem 'rspec-rails'
+gem  'rvm-capistrano',  require: false
 
 gem 'jquery-rails'
 
