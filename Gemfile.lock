@@ -41,6 +41,9 @@ GEM
       net-ssh-gateway (>= 1.1.0)
     ci_reporter (2.0.0)
       builder (>= 2.1.2)
+    ci_reporter_rspec (1.0.0)
+      ci_reporter (~> 2.0)
+      rspec (>= 2.14, < 4)
     coderay (1.0.9)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -281,7 +284,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass-rails (~> 2.2.1.2)
   capistrano
-  ci_reporter
+  ci_reporter_rspec
   coffee-rails (~> 4.0.0)
   devise
   god

@@ -8,7 +8,11 @@ require 'resque/tasks'
 require 'resque_scheduler'
 require 'resque_scheduler/tasks'
 require 'resque_scheduler/server'
-require 'ci/reporter/rake/spec'
+
+if ENV['GENERATE_REPORTS'] == 'true'
+  require 'ci/reporter/rake/rspec'
+  task :rspec => 'ci:setup:rspec'
+end
 
 task "resque:setup" => :environment do
   ENV['QUEUE'] = '*'

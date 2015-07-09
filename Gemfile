@@ -35,7 +35,8 @@ gem 'redis'
 gem 'resque-scheduler'
 gem 'will_paginate'
 gem "god"
-gem "ci_reporter"
+# gem "ci_reporter", :git => 'git://github.com/nicksieger/ci_reporter.git'
+gem 'ci_reporter_rspec'
 gem "simplecov"
 gem "simplecov-rcov"
 gem 'rspec'                                   # Rspec for testing
