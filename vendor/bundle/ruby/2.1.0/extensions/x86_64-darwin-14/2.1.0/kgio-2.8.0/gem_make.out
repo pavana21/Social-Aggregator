@@ -1,0 +1,95 @@
+/Users/pavan/.rvm/rubies/ruby-2.1.6/bin/ruby -r ./siteconf20150709-56268-h2em34.rb extconf.rb
+checking for CLOCK_MONOTONIC in time.h... no
+checking for CLOCK_MONOTONIC() in time.h... no
+checking for clockid_t in time.h... no
+checking for clock_gettime() in -lrt... no
+checking for t_open() in -lnsl... no
+checking for socket() in -lsocket... no
+checking for poll() in poll.h... yes
+checking for getaddrinfo() in sys/types.h,sys/socket.h,netdb.h... yes
+checking for getnameinfo() in sys/types.h,sys/socket.h,netdb.h... yes
+checking for struct sockaddr_storage in sys/types.h,sys/socket.h... yes
+checking for accept4() in sys/socket.h... no
+checking for sys/select.h... yes
+checking for writev() in sys/uio.h... yes
+checking for ruby/io.h... yes
+checking for rb_io_t.fd in ruby.h,ruby/io.h... yes
+checking for rb_io_t.mode in ruby.h,ruby/io.h... yes
+checking for rb_io_t.pathv in ruby.h,ruby/io.h... yes
+checking for struct RFile in ruby.h,ruby/io.h... yes
+checking size of struct RFile in ruby.h,ruby/io.h... 24
+checking for struct RObject... yes
+checking size of struct RObject... 40
+checking size of int... 4
+checking for rb_io_ascii8bit_binmode()... yes
+checking for rb_update_max_fd()... yes
+checking for rb_fd_fix_cloexec()... yes
+checking for rb_cloexec_open()... yes
+checking for rb_thread_blocking_region()... yes
+checking for rb_thread_io_blocking_region()... yes
+checking for rb_str_set_len()... yes
+checking for rb_time_interval()... yes
+checking for rb_wait_for_single_fd()... yes
+checking for rb_str_subseq()... yes
+checking for rb_ary_subseq()... yes
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling accept.c
+compiling autopush.c
+compiling connect.c
+In file included from connect.c:2:
+./my_fileno.h:23:12: warning: unused function 'my_fileno' [-Wunused-function]
+static int my_fileno(VALUE io)
+           ^
+1 warning generated.
+compiling kgio_ext.c
+kgio_ext.c:9:8: warning: unused variable 'mKgio' [-Wunused-variable]
+        VALUE mKgio = rb_define_module("Kgio");
+              ^
+1 warning generated.
+compiling poll.c
+In file included from poll.c:5:
+./broken_system_compat.h:17:10: warning: implicit declaration of function 'gettimeofday' is invalid in C99 [-Wimplicit-function-declaration]
+        int r = gettimeofday(&tv, NULL);
+                ^
+poll.c:148:12: warning: 'rb_thread_blocking_region' is deprecated [-Wdeprecated-declarations]
+        nr = (int)rb_thread_blocking_region(nogvl_poll, a, RUBY_UBF_IO, NULL);
+                  ^
+/Users/pavan/.rvm/rubies/ruby-2.1.6/include/ruby-2.1.0/ruby/intern.h:870:18: note: 'rb_thread_blocking_region' has been explicitly marked deprecated here
+DEPRECATED(VALUE rb_thread_blocking_region(rb_blocking_function_t *func, void *data1,
+                 ^
+/Users/pavan/.rvm/rubies/ruby-2.1.6/include/ruby-2.1.0/x86_64-darwin14.0/ruby/config.h:114:52: note: expanded from macro 'DEPRECATED'
+#define DEPRECATED(x) __attribute__ ((deprecated)) x
+                                                   ^
+2 warnings generated.
+compiling read_write.c
+read_write.c:591:10: warning: implicit conversion loses integer precision: 'long' to 'int' [-Wshorten-64-to-32]
+                return trim_writev_buffer(a, n);
+                ~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~
+read_write.c:627:36: warning: implicit conversion loses integer precision: 'unsigned long' to 'int' [-Wshorten-64-to-32]
+                        n = (long)writev(a.fd, a.vec, a.iov_cnt);
+                                  ~~~~~~              ~~^~~~~~~
+read_write.c:629:43: warning: implicit conversion loses integer precision: 'unsigned long' to 'unsigned int' [-Wshorten-64-to-32]
+                        n = (long)custom_writev(a.fd, a.vec, a.iov_cnt, a.batch_len);
+                                  ~~~~~~~~~~~~~              ~~^~~~~~~
+3 warnings generated.
+compiling tryopen.c
+tryopen.c:108:12: warning: 'rb_thread_blocking_region' is deprecated [-Wdeprecated-declarations]
+        fd = (int)rb_thread_blocking_region(nogvl_open, &o, RUBY_UBF_IO, 0);
+                  ^
+/Users/pavan/.rvm/rubies/ruby-2.1.6/include/ruby-2.1.0/ruby/intern.h:870:18: note: 'rb_thread_blocking_region' has been explicitly marked deprecated here
+DEPRECATED(VALUE rb_thread_blocking_region(rb_blocking_function_t *func, void *data1,
+                 ^
+/Users/pavan/.rvm/rubies/ruby-2.1.6/include/ruby-2.1.0/x86_64-darwin14.0/ruby/config.h:114:52: note: expanded from macro 'DEPRECATED'
+#define DEPRECATED(x) __attribute__ ((deprecated)) x
+                                                   ^
+1 warning generated.
+compiling wait.c
+linking shared-object kgio_ext.bundle
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 kgio_ext.bundle ./.gem.20150709-56268-1aq24va
+installing default kgio_ext libraries
