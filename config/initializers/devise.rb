@@ -2,10 +2,10 @@ require "omniauth-facebook"
 require "omniauth-twitter"
 require "omniauth-linkedin"
 require 'openssl'
-OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
-FACEBOOK_CONFIG = YAML.load_file("#{Rails.root}/config/facebook-config.yml")[Rails.env]
-TWITTER_CONFIG = YAML.load_file("#{Rails.root}/config/twitter-config.yml")[Rails.env]
-LINKEDIN_CONFIG = YAML.load_file("#{Rails.root}/config/linkedin-config.yml")[Rails.env]
+# OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+# FACEBOOK_CONFIG = YAML.load_file("#{Rails.root}/config/facebook-config.yml")[Rails.env]
+# TWITTER_CONFIG = YAML.load_file("#{Rails.root}/config/twitter-config.yml")[Rails.env]
+# LINKEDIN_CONFIG = YAML.load_file("#{Rails.root}/config/linkedin-config.yml")[Rails.env]
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
@@ -262,7 +262,7 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
-  config.omniauth :facebook, FACEBOOK_CONFIG['app_id'], FACEBOOK_CONFIG['app_secret'], :scope => "read_mailbox, read_stream", :client_options => {:ssl => {:ca_path => FACEBOOK_CONFIG["crt_path"]}}
-  config.omniauth :twitter, TWITTER_CONFIG['app_id'], TWITTER_CONFIG['app_secret']
-  config.omniauth :linkedin, LINKEDIN_CONFIG['app_id'], LINKEDIN_CONFIG['app_secret'], :scope => 'r_basicprofile r_emailaddress rw_nus r_network r_fullprofile'
+  # config.omniauth :facebook, FACEBOOK_CONFIG['app_id'], FACEBOOK_CONFIG['app_secret'], :scope => "read_mailbox, read_stream", :client_options => {:ssl => {:ca_path => FACEBOOK_CONFIG["crt_path"]}}
+  # config.omniauth :twitter, TWITTER_CONFIG['app_id'], TWITTER_CONFIG['app_secret']
+  # config.omniauth :linkedin, LINKEDIN_CONFIG['app_id'], LINKEDIN_CONFIG['app_secret'], :scope => 'r_basicprofile r_emailaddress rw_nus r_network r_fullprofile'
 end

@@ -41,6 +41,7 @@ gem "simplecov"
 gem "simplecov-rcov"
 gem 'rspec'                                   # Rspec for testing
 gem 'rspec-rails'
+gem 'factory_girl'
 gem  'rvm-capistrano',  require: false
 
 gem 'jquery-rails'

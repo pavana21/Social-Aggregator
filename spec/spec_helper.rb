@@ -20,12 +20,24 @@
 require 'simplecov'
 require 'simplecov-rcov'
 SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+  add_filter '/spec/'
+  add_filter '/config/'
+
+  add_group 'Controllers', '/app/controllers'
+  add_group 'Models', '/app/models'
+  add_group 'Helpers', '/app/helpers'
+  add_group 'Mailers', '/app/mailers'
+  add_group 'Views', '/app/views'
+  add_group 'Lib', '/lib'
+  add_group 'Accounting', '/lib/accounting'
+end
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
+   config.warnings = false
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
