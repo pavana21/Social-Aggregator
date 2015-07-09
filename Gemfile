@@ -47,7 +47,7 @@ gem  'rvm-capistrano',  require: false
 gem 'jquery-rails'
 gem 'therubyracer'
 
-# testasdtest
+# testasdtestasd
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
